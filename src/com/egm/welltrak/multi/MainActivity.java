@@ -5,6 +5,8 @@ import android.os.*;
 import android.view.*;
 import android.widget.*;
 
+import com.egm.util.L;
+
 public class MainActivity extends Activity
 {
     /** Called when the activity is first created. */
@@ -13,5 +15,7 @@ public class MainActivity extends Activity
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+		L.i("Success");
+		L.heap();
     }
 }

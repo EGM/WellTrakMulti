@@ -3,5 +3,19 @@
 
     <string name="hello">Hello World, MainActivity!</string>
     <string name="app_name">WellTrak</string>
+	
+	<string name="cancel">Cancel</string>
+	<string name="ok">OK</string>
+	
+	<string name="welllist_btnNewWell">New Well</string>
 
+	<string name="welldetails_etName">Name</string>
+	<string name="welldetails_etAddress">Address</string>
+	<string name="welldetails_btnUpdateWell">Update Well</string>
+	<string name="visitdetails_etFlowMeter">Flow Meter Reading</string>
+	<string name="visitdetails_etEntryChlorine"
+		>Chlorine Residual at Point of Entry</string>
+	<string name="visitdetails_etRemoteChlorine"
+		>Chlorine Residual at Point of Use</string>
+	<string name="visitdetails_btnUpdateVisit">Update Visit</string>
 </resources>
