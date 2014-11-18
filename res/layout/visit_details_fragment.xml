@@ -8,7 +8,9 @@
 	<DatePicker
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		android:calendarViewShown="false"/>
+		android:calendarViewShown="false"
+		android:id="@+id/visitdetails_dpDate"/>
+	
 
 	<TextView
 		android:layout_height="wrap_content"
