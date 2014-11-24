@@ -7,26 +7,30 @@
 
 	<DatePicker
 		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:calendarViewShown="false"
-		android:id="@+id/vd_dpDate"/>
+		android:id="@+id/vd_dpDate"
+		android:layout_alignParentLeft="true"/>
 
 	<TextView
 		android:layout_height="wrap_content"
 		android:text="@string/vd_etFlowMeter"
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:layout_width="wrap_content"
-		android:layout_below="@id/vd_dpDate"
 		android:id="@+id/vd_tvFlowMeter"
-		android:layout_marginTop="@dimen/text_margin"
-		android:layout_marginLeft="@dimen/text_margin"/>
+		android:layout_toRightOf="@id/vd_dpDate"
+		android:layout_marginLeft="@dimen/text_margin"
+		android:layout_marginTop="@dimen/text_margin"/>
 
 	<EditText
 		android:layout_height="wrap_content"
 		android:ems="10"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:id="@+id/vd_etFlowMeter"
-		android:layout_below="@id/vd_tvFlowMeter"/>
+		android:layout_below="@id/vd_tvFlowMeter"
+		android:layout_toRightOf="@id/vd_dpDate"
+		android:inputType="number"
+		android:layout_marginLeft="@dimen/text_margin"/>
 
 	<TextView
 		android:layout_height="wrap_content"
@@ -35,14 +39,18 @@
 		android:layout_width="wrap_content"
 		android:layout_below="@id/vd_etFlowMeter"
 		android:id="@+id/vd_tvEntryChlorine"
+		android:layout_toRightOf="@id/vd_dpDate"
 		android:layout_marginLeft="@dimen/text_margin"/>
 
 	<EditText
 		android:layout_height="wrap_content"
 		android:ems="10"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:id="@+id/vd_etEntryChlorine"
-		android:layout_below="@id/vd_tvEntryChlorine"/>
+		android:layout_below="@id/vd_tvEntryChlorine"
+		android:layout_toRightOf="@id/vd_dpDate"
+		android:inputType="numberDecimal"
+		android:layout_marginLeft="@dimen/text_margin"/>
 
 	<TextView
 		android:layout_height="wrap_content"
@@ -51,14 +59,18 @@
 		android:layout_width="wrap_content"
 		android:layout_below="@id/vd_etEntryChlorine"
 		android:id="@+id/vd_tvRemoteChlorine"
+		android:layout_toRightOf="@id/vd_dpDate"
 		android:layout_marginLeft="@dimen/text_margin"/>
 
 	<EditText
 		android:layout_height="wrap_content"
 		android:ems="10"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:id="@+id/vd_etRemoteChlorine"
-		android:layout_below="@id/vd_tvRemoteChlorine"/>
+		android:layout_below="@id/vd_tvRemoteChlorine"
+		android:layout_toRightOf="@id/vd_dpDate"
+		android:inputType="numberDecimal"
+		android:layout_marginLeft="@dimen/text_margin"/>
 
 	<Button
 		android:layout_height="wrap_content"

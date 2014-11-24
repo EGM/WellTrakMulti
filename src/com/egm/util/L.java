@@ -2,8 +2,8 @@ package com.egm.util;
 
 import android.os.Debug;
 import android.util.Log;
-import com.egm.welltrak.multi.BuildConfig;
-import com.egm.welltrak.multi.R;
+import com.egm.welltrak.BuildConfig;
+import com.egm.welltrak.R;
 
 /**
  * Logger Class

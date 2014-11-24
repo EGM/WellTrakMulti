@@ -6,17 +6,17 @@
 	android:orientation="vertical">
 
 	<Button
-		android:id="@+id/welllist_btnNewWell"
+		android:id="@+id/wl_btnNewWell"
 		android:layout_height="wrap_content"
-		android:text="@string/welllist_btnNewWell"
+		android:text="@string/wl_btnNewWell"
 		android:layout_width="match_parent"
 		android:layout_alignParentBottom="true"/>
 
 	<ListView
-		android:layout_above="@id/welllist_btnNewWell"
+		android:layout_above="@id/wl_btnNewWell"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
-		android:id="@+id/welllist_lvWellList"/>
+		android:id="@+id/wl_lvWellList"/>
 
 </RelativeLayout>
 
