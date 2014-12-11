@@ -1,92 +1,130 @@
 package com.egm.welltrak.model;
+import java.util.*;
 
-import java.util.Calendar;
-import android.renderscript.*;
-
-public class VisitItem implements Item
+public class VisitItem
 {
-	int _id;
-	Calendar date;
-	Integer flowMeter;
-	Float entryChlorine;
-	Float remoteChlorine;
-	
-	public void VisitItem()
+	long id;
+	long wellId;
+	Date date;
+	int fm;
+	String frcPoe;
+	String frcPou;
+	String ph;
+
+	public VisitItem()
 	{
-		//Default constructor
-	}
-	
-	public void VisitItem(int id, Calendar date)
-	{
-		this._id = id;
-		this.date = date;
 	}
 	
-	public void VisitItem(int id, Calendar date, Integer flowMeter)
+	public VisitItem(long id, long wellId, Date date, int fm, 
+		String frcPoe, String frcPou, String ph)
 	{
-		this._id = id;
+		this.id = id;
+		this.wellId = wellId;
 		this.date = date;
-		this.flowMeter = flowMeter;
+		this.fm = fm;
+		this.frcPoe = frcPoe;
+		this.frcPou = frcPou;
+		this.ph = ph;
+	}
+	public VisitItem(long wellId, Date date, int fm, 
+		String frcPoe, String frcPou, String ph)
+	{
+		this.wellId = wellId;
+		this.date = date;
+		this.fm = fm;
+		this.frcPoe = frcPoe;
+		this.frcPou = frcPou;
+		this.ph = ph;
+	}
+
+	public void setFm(int fm)
+	{
+		this.fm = fm;
+	}
+
+	public int getFm()
+	{
+		return fm;
 	}
 	
-	public void VisitItem(int id, Calendar date, Integer flowMeter,
-		Float entryChlorine, Float remoteChlorine)
+	public void setId(long id)
 	{
-		this._id = id;
+		this.id = id;
+	}
+
+	public long getId()
+	{
+		return id;
+	}
+
+	public void setWellId(long wellId)
+	{
+		this.wellId = wellId;
+	}
+
+	public long getWellId()
+	{
+		return wellId;
+	}
+
+	public void setDate(Date date)
+	{
 		this.date = date;
-		this.flowMeter = flowMeter;
-		this.entryChlorine = entryChlorine;
-		this.remoteChlorine = remoteChlorine;
 	}
 
-	public void setId(int id)
-	{
-		this._id = id;
-	}
-
-	public int getId()
-	{
-		return _id;
-	}
-
-	public void setDate(Calendar date)
-	{
-		this.date = date;
-	}
-
-	public Calendar getDate()
+	public Date getDate()
 	{
 		return date;
 	}
 
-	public void setFlowMeter(Integer flowMeter)
+	public void setFrcPoe(String frcPoe)
 	{
-		this.flowMeter = flowMeter;
+		this.frcPoe = frcPoe;
 	}
 
-	public Integer getFlowMeter()
+	public String getFrcPoe()
 	{
-		return flowMeter;
+		return frcPoe;
 	}
 
-	public void setEntryChlorine(Float entryChlorine)
+	public void setFrcPou(String frcPou)
 	{
-		this.entryChlorine = entryChlorine;
+		this.frcPou = frcPou;
 	}
 
-	public Float getEntryChlorine()
+	public String getFrcPou()
 	{
-		return entryChlorine;
+		return frcPou;
 	}
 
 
-	public void setRemoteChlorine(Float remoteChlorine)
+	public void setPh(String ph)
 	{
-		this.remoteChlorine = remoteChlorine;
+		this.ph = ph;
 	}
 
-	public Float getRemoteChlorine()
+	public String getPh()
 	{
-		return remoteChlorine;
+		return ph;
+	}
+
+	@Override
+	public String toString()
+	{
+		return new StringBuilder("id=")
+		.append(getId())
+		.append(",well id=")
+		.append(getWellId())
+		.append(",date=")
+		.append(getDate().toString())
+		.append(",fm=")
+		.append(getFm())
+		.append(",frc poe=")
+		.append(getFrcPoe())
+		.append(",frc pou=")
+		.append(getFrcPou())
+		.append(",ph=")
+		.append(getPh())
+		.toString();
 	}
 }

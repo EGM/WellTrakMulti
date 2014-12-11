@@ -1,51 +1,43 @@
 package com.egm.welltrak.model;
 
-public class WellItem implements Item
+public class WellItem
 {
-	
-	private int _id;
-	private String pwsid;
+	private long id;
 	private String name;
-	private String address;
+	private String pwsid;
+	private String location;
 	
-	public void WellItem() 
+	public WellItem()
 	{
-		//Empty constructor
 	}
 	
-	public void WellItem(int id, String pwsid, String name, String address) 
+	public WellItem(String name, String pwsid, String location)
 	{
-		this._id = id;
-		this.pwsid = pwsid;
 		this.name = name;
-		this.address = address;
+		this.pwsid = pwsid;
+		this.location = location;
 	}
 	
-	public void WellItem(String pwsid, String name, String address) 
+	public WellItem(long id, String name, String pwsid, String location)
 	{
-		this.pwsid = pwsid;
+		this.id = id;
 		this.name = name;
-		this.address = address;
+		this.pwsid = pwsid;
+		this.location = location;
 	}
 	
 	public void setId(int id)
 	{
-		this._id = id;
+		this.id = id;
 	}
-
-	public int getId()
+	public void setId(long id)
 	{
-		return _id;
+		this.id = (int)id;
 	}
-
-	public void setPwsid(String pwsid)
+	
+	public long getId()
 	{
-		this.pwsid = pwsid;
-	}
-
-	public String getPwsid()
-	{
-		return pwsid;
+		return id;
 	}
 
 	public void setName(String name)
@@ -58,13 +50,38 @@ public class WellItem implements Item
 		return name;
 	}
 
-	public void setAddress(String address)
+	public void setPwsid(String pwsid)
 	{
-		this.address = address;
+		this.pwsid = pwsid;
 	}
 
-	public String getAddress()
+	public String getPwsid()
 	{
-		return address;
-	}	
+		return pwsid;
+	}
+
+
+	public void setLocation(String location)
+	{
+		this.location = location;
+	}
+
+	public String getLocation()
+	{
+		return location;
+	}
+
+	@Override
+	public String toString()
+	{
+		return new StringBuilder("id=")
+		.append(getId())
+		.append(",name=")
+		.append(getName())
+		.append(",pwsid=")
+		.append(getPwsid())
+		.append(",location=")
+		.append(getLocation())
+		.toString();
+	}
 }
