@@ -48,7 +48,7 @@ public class VisitDao
 	public long add(VisitItem item)
 	{ 
 		L.d("Adding item: " + item.toString());
-		L.d("adding date = " + item.getDate().toLocaleString());
+	
 		ContentValues values = new ContentValues();
 		values.put(VisitColumns.WELL_ID.toString(), item.getWellId());
 		values.put(VisitColumns.DATE.toString(), item.getDateString());
@@ -71,20 +71,12 @@ public class VisitDao
 	public VisitItem get(long id)
 	{ 
 		L.d("Getting item for id " + id);
-//		VisitItem item = new VisitItem();
 		Cursor cursor = DatabaseManager.INSTANCE.getDatabase()
 			.query(TABLE_NAME, new String[]{ "*" }, VisitColumns._ID.toString() + "=?", 
 				   new String[]{ String.valueOf(id) }, null, null, null);
 		VisitItem item = null;
 		if (cursor.moveToFirst())
 		{
-//			item.setId(cursor.getInt(VisitColumns._ID.getValue()));
-//			item.setWellId(cursor.getInt(VisitColumns.WELL_ID.getValue()));
-//			item.setDate(cursor.getString(VisitColumns.DATE.getValue()));
-//			item.setFm(cursor.getInt(VisitColumns.FM.getValue()));
-//			item.setFrcPoe(cursor.getString(VisitColumns.FRC_POE.getValue()));
-//			item.setFrcPou(cursor.getString(VisitColumns.FRC_POU.getValue()));
-//			item.setPh(cursor.getString(VisitColumns.PH.getValue()));
 			item = new VisitItem(cursor.getInt(VisitColumns._ID.getValue()),
 								 cursor.getInt(VisitColumns.WELL_ID.getValue()),
 								 cursor.getString(VisitColumns.DATE.getValue()),
@@ -98,7 +90,10 @@ public class VisitDao
 	}
 
 	public VisitItem get(long wellId, Date date)
-	{ return null; }
+	{ 
+		L.d("Getting item for well id " + wellId + " and date " + date.toString());
+		return null; 
+	}
 
 	public List<VisitItem> getAll()
 	{ return null; }

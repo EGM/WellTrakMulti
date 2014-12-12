@@ -1,8 +1,9 @@
 package com.egm.welltrak.model;
+
 import com.egm.util.*;
 import com.egm.welltrak.model.*;
 import com.egm.welltrak.dao.*;
-import java.util.*;
+import java.util.ArrayList;
 
 public class Item_Tests
 {
@@ -13,8 +14,8 @@ public class Item_Tests
 			WellDao.onUpgrade(DatabaseManager.INSTANCE.getDatabase());
 			
 			VisitItem v = new VisitItem();
-			v.setDate("11 Dec 2014");
-			Test.assertEquals("11 Dec 2014", v.getDateString(), "1");
+			v.setDate("2014-12-11");
+			Test.assertEquals("2014-12-11", v.getDateString(), "1");
 
 			WellDao dao = new WellDao();
 			WellItem item = new WellItem();
@@ -40,8 +41,6 @@ public class Item_Tests
 			v.setId(vdao.add(v));
 			VisitItem a = vdao.get(v.getId());
 			Test.assertEquals(1, vdao.getCount(), "3");
-			L.d("v: "+v.toString());
-			L.d("a: "+a.toString());
 			Test.assertEquals(v, a, "4");
 		}
 		catch (Exception e)

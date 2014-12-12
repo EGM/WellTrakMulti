@@ -1,5 +1,6 @@
 package com.egm.welltrak.model;
-import java.util.*;
+
+import java.sql.Date;
 import java.text.*;
 import com.egm.util.*;
 
@@ -12,41 +13,39 @@ public class VisitItem {
 	private String frcPou;
 	private String ph;
 	
-	private static final String FORMAT_STRING = "dd MMM yyyy";
-
 	public VisitItem() {
 	}
 	
 	public VisitItem(long id, long wellId, Date date, int fm, 
 		String frcPoe, String frcPou, String ph) {
-		this.id = id;
-		this.wellId = wellId;
+		setId(id);
+		setWellId(wellId);
 		setDate(date);
-		this.fm = fm;
-		this.frcPoe = frcPoe;
-		this.frcPou = frcPou;
-		this.ph = ph;
+		setFm(fm);
+		setFrcPoe(frcPoe);
+		setFrcPou(frcPou);
+		setPh(ph);
 	}
 	
 	public VisitItem(long id, long wellId, String dateString, int fm, 
 					 String frcPoe, String frcPou, String ph) {
-		this.id = id;
-		this.wellId = wellId;
+		setId(id);
+		setWellId(wellId);
 		setDate(dateString);
-		this.fm = fm;
-		this.frcPoe = frcPoe;
-		this.frcPou = frcPou;
-		this.ph = ph;
+		setFm(fm);
+		setFrcPoe(frcPoe);
+		setFrcPou(frcPou);
+		setPh(ph);
 	}
 	
 	public VisitItem(long wellId, Date date, int fm, 
 		String frcPoe, String frcPou, String ph) {
-		this.wellId = wellId;
-		this.date = date;
-		this.fm = fm;
-		this.frcPoe = frcPoe;
-		this.frcPou = frcPou;
-		this.ph = ph;
+		setWellId(wellId);
+		setDate(date);
+		setFm(fm);
+		setFrcPoe(frcPoe);
+		setFrcPou(frcPou);
+		setPh(ph);
 	}
 
 	public void setFm(int fm) {
@@ -79,12 +78,7 @@ public class VisitItem {
 	}
 	
 	public void setDate(String dateString) {
-		SimpleDateFormat format = new SimpleDateFormat(FORMAT_STRING);
-		try {
-			this.date = format.parse(dateString);
-		} catch (ParseException e) {
-			L.e("Parse error", e); 
-		}
+		this.date = Date.valueOf(dateString);
 	}
 
 	public Date getDate() {
@@ -92,8 +86,7 @@ public class VisitItem {
 	}
 	
 	public String getDateString() {
-		SimpleDateFormat format = new SimpleDateFormat(FORMAT_STRING);
-		return format.format(this.date);
+		return date.toString();
 	}
 
 	public void setFrcPoe(String frcPoe) {
