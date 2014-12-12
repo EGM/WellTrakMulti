@@ -7,8 +7,7 @@ public class WellItem
 	private String pwsid;
 	private String location;
 	
-	public WellItem()
-	{
+	public WellItem() {
 	}
 	
 	public WellItem(String name, String pwsid, String location)

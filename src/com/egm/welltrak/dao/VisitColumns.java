@@ -1,7 +1,6 @@
 package com.egm.welltrak.dao;
 
-public enum VisitColumns
-{
+public enum VisitColumns {
 	_ID("_id", 0),
 	WELL_ID("well_id", 1),
 	DATE("date", 2),

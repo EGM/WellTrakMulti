@@ -10,10 +10,10 @@ import android.database.*;
 public class WellDao
 {
 	public static final String TABLE_NAME = "wells";
-	
+
 	public static void onCreate(SQLiteDatabase db)
 	{
-		L.i("Creating table "+TABLE_NAME);
+		L.i("Creating table " + TABLE_NAME);
 		String sql = new StringBuilder()
 			.append("CREATE TABLE ").append(TABLE_NAME)
 			.append(" ( ").append(WellColumns._ID)
@@ -25,16 +25,16 @@ public class WellDao
 			.toString();
 		db.execSQL(sql);
 	}
-	
+
 	public static void onUpgrade(SQLiteDatabase db)
 	{
-		L.i("Upgrading table "+TABLE_NAME);
+		L.i("Upgrading table " + TABLE_NAME);
 		String sql = new StringBuilder("DROP TABLE IF EXISTS ")
 			.append(TABLE_NAME).toString();
 		db.execSQL(sql);
 		onCreate(db);
 	}
-	
+
 	public long add(WellItem item)
 	{
 		ContentValues values = new ContentValues();
@@ -43,38 +43,23 @@ public class WellDao
 		values.put(WellColumns.LOCATION.toString(), item.getLocation());
 		return (DatabaseManager.INSTANCE.getDatabase().insert(TABLE_NAME, null, values)); 
 	}
-	
+
 	public void delete(WellItem item)
 	{
-		DatabaseManager.INSTANCE.getDatabase().delete(TABLE_NAME, 
-			WellColumns._ID.toString()+" = ? ", new String[] { String.valueOf(item.getId()) });
+		DatabaseManager.INSTANCE.getDatabase()
+			.delete(TABLE_NAME, 
+					WellColumns._ID.toString() + " = ? ", 
+					new String[] { String.valueOf(item.getId()) });
 	}
-	
+
 	public WellItem get(long id)
 	{
 		WellItem item = new WellItem();
 		Cursor cursor = DatabaseManager.INSTANCE.getDatabase()
-			.query(TABLE_NAME, new String[]{ "*" }, WellColumns._ID.toString()+"=?", 
-				new String[]{ String.valueOf(id) }, null, null, null);
-	
-		if(cursor.moveToFirst())
-			{
-				item.setId(cursor.getInt(WellColumns._ID.getValue()));
-				item.setName(cursor.getString(WellColumns.NAME.getValue()));
-				item.setPwsid(cursor.getString(WellColumns.PWSID.getValue()));
-				item.setLocation(cursor.getString(WellColumns.LOCATION.getValue()));
-			}
-		cursor.close();
-		return item;
-	}
-	
-	public WellItem get(String name)
-	{
-		WellItem item = new WellItem();
-		Cursor cursor = DatabaseManager.INSTANCE.getDatabase()
-			.query(TABLE_NAME, new String[]{ "*" }, WellColumns.NAME.toString()+"=?", 
-				   new String[]{ name }, null, null, null);
-		if(cursor.moveToFirst())
+			.query(TABLE_NAME, new String[]{ "*" }, WellColumns._ID.toString() + "=?", 
+				   new String[]{ String.valueOf(id) }, null, null, null);
+
+		if (cursor.moveToFirst())
 		{
 			item.setId(cursor.getInt(WellColumns._ID.getValue()));
 			item.setName(cursor.getString(WellColumns.NAME.getValue()));
@@ -84,13 +69,47 @@ public class WellDao
 		cursor.close();
 		return item;
 	}
-	
-	public List<WellItem> getAll()
-	{ 
-		//todo 
-		return null;
+
+	public WellItem get(String name)
+	{
+		WellItem item = new WellItem();
+		Cursor cursor = DatabaseManager.INSTANCE.getDatabase()
+			.query(TABLE_NAME, new String[]{ "*" }, WellColumns.NAME.toString() + "=?", 
+				   new String[]{ name }, null, null, null);
+		if (cursor.moveToFirst())
+		{
+			item.setId(cursor.getInt(WellColumns._ID.getValue()));
+			item.setName(cursor.getString(WellColumns.NAME.getValue()));
+			item.setPwsid(cursor.getString(WellColumns.PWSID.getValue()));
+			item.setLocation(cursor.getString(WellColumns.LOCATION.getValue()));
+		}
+		cursor.close();
+		return item;
 	}
-	
+
+	public ArrayList<WellItem> getAll()
+	{ 
+		ArrayList<WellItem> list = new ArrayList<WellItem>();
+		WellItem item = new WellItem();
+		Cursor cursor = DatabaseManager.INSTANCE.getDatabase()
+			.query(TABLE_NAME, new String[]{ "*" }, 
+				   null, null, null, null, null);
+		if (cursor.moveToFirst())
+		{
+			do
+			{
+				item.setId(cursor.getInt(WellColumns._ID.getValue()));
+				item.setName(cursor.getString(WellColumns.NAME.getValue()));
+				item.setPwsid(cursor.getString(WellColumns.PWSID.getValue()));
+				item.setLocation(cursor.getString(WellColumns.LOCATION.getValue()));
+				list.add(item);
+			}
+			while (cursor.moveToNext());
+		}
+		cursor.close();
+		return list;
+	}
+
 	public int getCount()
 	{
 		int count = 0;
@@ -100,17 +119,16 @@ public class WellDao
 		cursor.close();
 		return count;
 	}
-	
+
 	public void update(WellItem item)
 	{
-		//todo
 		ContentValues values = new ContentValues();
 		values.put(WellColumns.NAME.toString(), item.getName());
 		values.put(WellColumns.PWSID.toString(), item.getPwsid());
 		values.put(WellColumns.LOCATION.toString(), item.getLocation());
 		DatabaseManager.INSTANCE.getDatabase()
-			.update(TABLE_NAME, values, WellColumns._ID+"=", 
-				new String[] { String.valueOf(item.getId()) });
+			.update(TABLE_NAME, values, WellColumns._ID + "=", 
+					new String[] { String.valueOf(item.getId()) });
 	}
-	
+
 }

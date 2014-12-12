@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
+import com.egm.welltrak.model.Item_Tests;
+import com.egm.welltrak.dao.*;
+
 public class MainActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 
@@ -25,23 +28,21 @@ public class MainActivity extends FragmentActivity implements
 		setContentView(R.layout.activity_main);
 
 		// Initilization
+		DatabaseManager.INSTANCE.init(this);
+		Item_Tests.run();	
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
-		L.d("Setting viewpager adapter...");
 		viewPager.setAdapter(mAdapter);
-		L.d("Viewpager adapter set.");
 		actionBar.setHomeButtonEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);		
 
 		// Adding Tabs
 		for (String tab_name : tabs) {
-			L.d(new StringBuilder("Adding tab ").append(tab_name).toString());
 			actionBar.addTab(actionBar.newTab().setText(tab_name)
 					.setTabListener(this));
 		}
-		L.d("Setting onPageChangeListener");
 		/**
 		 * on swiping the viewpager make respective tab selected
 		 * */
@@ -62,7 +63,6 @@ public class MainActivity extends FragmentActivity implements
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
-		L.d("onPageChangeListener set.");
 		} catch (Exception e) {
 			L.e("CRASH!", e);
 		}

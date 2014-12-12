@@ -1,6 +1,6 @@
 package com.egm.welltrak.adapter;
 
-import com.egm.util.L;
+import com.egm.util.*;
 import com.egm.welltrak.Constants;
 import com.egm.welltrak.VisitListFragment;
 import com.egm.welltrak.WellDetailsFragment;

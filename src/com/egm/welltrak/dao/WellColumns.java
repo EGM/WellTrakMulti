@@ -1,7 +1,6 @@
 package com.egm.welltrak.dao;
 
-public enum WellColumns
-{
+public enum WellColumns {
 	_ID("_id", 0),
 	NAME("name", 1),
 	PWSID("pwsid", 2),

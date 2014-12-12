@@ -4,6 +4,11 @@ import com.egm.welltrak.model.*;
 import java.nio.*;
 import junit.framework.*;
 
+/**
+ * Test Class
+ *
+ * @author John LaDuke
+ */
 public class Test
 {
 	public static void assertEquals(VisitItem expected, VisitItem actual) {
@@ -11,14 +16,15 @@ public class Test
 	}
 
 	public static void assertEquals(VisitItem expected, VisitItem actual, String msg) {
-		if ((expected.getId()==actual.getId()) 
-			&& (expected.getWellId()==actual.getWellId())
-			&& (expected.getDate().equals(actual.getDate()) 
-			&& (expected.getFm()==actual.getFm())
-			&& (expected.getFrcPoe().equals(actual.getFrcPoe())
-			&& (expected.getFrcPou().equals(actual.getFrcPou())
-			&& (expected.getPh().equals(actual.getPh())
-			)))))
+		if (
+			expected.getId()==actual.getId()
+			&& expected.getWellId()==actual.getWellId()
+			&& expected.getDate().equals(actual.getDate())
+			&& expected.getFm()==actual.getFm()
+			&& compare(expected.getFrcPoe(), actual.getFrcPoe())
+			&& compare(expected.getFrcPou(), actual.getFrcPou())
+			&& compare(expected.getPh(), actual.getPh())
+			)
 			pass(msg);
 		else fail(expected, actual, msg);
 	}
@@ -28,11 +34,12 @@ public class Test
 	}
 	
 	public static void assertEquals(WellItem expected, WellItem actual, String msg) {
-		if ((expected.getId()==actual.getId()) 
-			&& (expected.getName().equals(actual.getName()) 
-			&& (expected.getPwsid().equals(actual.getPwsid()) 
-			&& (expected.getLocation().equals(actual.getLocation())
-		))))
+		if (
+			expected.getId()==actual.getId()
+			&& compare(expected.getName(), actual.getName()) 
+			&& compare(expected.getPwsid(), actual.getPwsid()) 
+			&& compare(expected.getLocation(), actual.getLocation())
+		)
 		pass(msg);
 		else fail(expected, actual, msg);
 	}
@@ -69,8 +76,16 @@ public class Test
 	}
 	
 	public static void assertEquals(String expected, String actual, String msg) {
-		if (expected.equals(actual)) pass(msg);
+		if (compare(expected, actual)) pass(msg);
 		else fail(expected, actual, msg);
+	}
+	
+	private static boolean compare(String expected, String actual)
+	{
+		if (expected==null)
+			return (actual==null);
+		else
+			return (expected.equals(actual));
 	}
 	
 	private static void pass(String msg) {
