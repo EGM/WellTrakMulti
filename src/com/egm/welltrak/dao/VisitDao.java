@@ -92,11 +92,55 @@ public class VisitDao
 	public VisitItem get(long wellId, Date date)
 	{ 
 		L.d("Getting item for well id " + wellId + " and date " + date.toString());
-		return null; 
+		Cursor cursor = DatabaseManager.INSTANCE.getDatabase()
+			.query(TABLE_NAME, new String[]{ "*" }, 
+				VisitColumns.WELL_ID.toString() 
+				+ "=? AND " 
+				+ VisitColumns.DATE.toString()
+				+ "=? ", 
+				   new String[]{ String.valueOf(wellId), 
+				   		date.toString() }, 
+						null, null, null);
+		VisitItem item = null;
+		if (cursor.moveToFirst())
+		{
+			item = new VisitItem(cursor.getInt(VisitColumns._ID.getValue()),
+								 cursor.getInt(VisitColumns.WELL_ID.getValue()),
+								 cursor.getString(VisitColumns.DATE.getValue()),
+								 cursor.getInt(VisitColumns.FM.getValue()),
+								 cursor.getString(VisitColumns.FRC_POE.getValue()),
+								 cursor.getString(VisitColumns.FRC_POU.getValue()),
+								 cursor.getString(VisitColumns.PH.getValue()));
+		}
+		cursor.close();
+		return item;
 	}
 
-	public List<VisitItem> getAll()
-	{ return null; }
+	public ArrayList<VisitItem> getAll()
+	{ 
+		ArrayList<VisitItem> list = new ArrayList<VisitItem>();
+		VisitItem item = new VisitItem();
+		Cursor cursor = DatabaseManager.INSTANCE.getDatabase()
+			.query(TABLE_NAME, new String[]{ "*" }, 
+				   null, null, null, null, null);
+		if (cursor.moveToFirst())
+		{
+			do
+			{
+				item.setId(cursor.getInt(VisitColumns._ID.getValue()));
+				item.setWellId(cursor.getInt(VisitColumns.WELL_ID.getValue()));
+				item.setDate(cursor.getString(VisitColumns.DATE.getValue()));
+				item.setFm(cursor.getInt(VisitColumns.FM.getValue()));
+				item.setFrcPoe(cursor.getString(VisitColumns.FRC_POE.getValue()));
+				item.setFrcPou(cursor.getString(VisitColumns.FRC_POU.getValue()));
+				item.setPh(cursor.getString(VisitColumns.PH.getValue()));
+				list.add(item);
+			}
+			while (cursor.moveToNext());
+		}
+		cursor.close();
+		return list; 
+	}
 
 	public int getCount()
 	{ 
@@ -118,7 +162,7 @@ public class VisitDao
 		values.put(VisitColumns.FRC_POU.toString(), item.getFrcPou());
 		values.put(VisitColumns.PH.toString(), item.getPh());
 		DatabaseManager.INSTANCE.getDatabase()
-			.update(TABLE_NAME, values, WellColumns._ID + "=", 
+			.update(TABLE_NAME, values, WellColumns._ID + "=?", 
 					new String[] { String.valueOf(item.getId()) });
 	}
 }

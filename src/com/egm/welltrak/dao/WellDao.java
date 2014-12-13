@@ -54,17 +54,18 @@ public class WellDao
 
 	public WellItem get(long id)
 	{
-		WellItem item = new WellItem();
+		WellItem item = null; // = new WellItem();
 		Cursor cursor = DatabaseManager.INSTANCE.getDatabase()
 			.query(TABLE_NAME, new String[]{ "*" }, WellColumns._ID.toString() + "=?", 
 				   new String[]{ String.valueOf(id) }, null, null, null);
 
 		if (cursor.moveToFirst())
 		{
-			item.setId(cursor.getInt(WellColumns._ID.getValue()));
-			item.setName(cursor.getString(WellColumns.NAME.getValue()));
-			item.setPwsid(cursor.getString(WellColumns.PWSID.getValue()));
-			item.setLocation(cursor.getString(WellColumns.LOCATION.getValue()));
+			item = new WellItem(
+				cursor.getInt(WellColumns._ID.getValue()),
+				cursor.getString(WellColumns.NAME.getValue()),
+				cursor.getString(WellColumns.PWSID.getValue()),
+				cursor.getString(WellColumns.LOCATION.getValue()));
 		}
 		cursor.close();
 		return item;
@@ -72,16 +73,17 @@ public class WellDao
 
 	public WellItem get(String name)
 	{
-		WellItem item = new WellItem();
+		WellItem item = null;
 		Cursor cursor = DatabaseManager.INSTANCE.getDatabase()
 			.query(TABLE_NAME, new String[]{ "*" }, WellColumns.NAME.toString() + "=?", 
 				   new String[]{ name }, null, null, null);
 		if (cursor.moveToFirst())
 		{
-			item.setId(cursor.getInt(WellColumns._ID.getValue()));
-			item.setName(cursor.getString(WellColumns.NAME.getValue()));
-			item.setPwsid(cursor.getString(WellColumns.PWSID.getValue()));
-			item.setLocation(cursor.getString(WellColumns.LOCATION.getValue()));
+			item = new WellItem(
+				cursor.getInt(WellColumns._ID.getValue()),
+				cursor.getString(WellColumns.NAME.getValue()),
+				cursor.getString(WellColumns.PWSID.getValue()),
+				cursor.getString(WellColumns.LOCATION.getValue()));
 		}
 		cursor.close();
 		return item;
@@ -127,8 +129,7 @@ public class WellDao
 		values.put(WellColumns.PWSID.toString(), item.getPwsid());
 		values.put(WellColumns.LOCATION.toString(), item.getLocation());
 		DatabaseManager.INSTANCE.getDatabase()
-			.update(TABLE_NAME, values, WellColumns._ID + "=", 
+			.update(TABLE_NAME, values, WellColumns._ID + "=?", 
 					new String[] { String.valueOf(item.getId()) });
 	}
-
 }

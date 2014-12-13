@@ -3,6 +3,7 @@ package com.egm.welltrak.model;
 import com.egm.util.*;
 import com.egm.welltrak.model.*;
 import com.egm.welltrak.dao.*;
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class Item_Tests
@@ -38,10 +39,19 @@ public class Item_Tests
 			
 			v.setWellId(2);
 			v.setFm(123456);
+			v.setDate("2014-12-12");
 			v.setId(vdao.add(v));
 			VisitItem a = vdao.get(v.getId());
 			Test.assertEquals(1, vdao.getCount(), "3");
 			Test.assertEquals(v, a, "4");
+			
+			VisitItem b = vdao.get(2, Date.valueOf("2014-12-12"));
+			Test.assertEquals(v, b, "5");
+			
+			ArrayList<VisitItem> vitems = vdao.getAll();
+			Test.assertEquals(1, vitems.size(), "6");
+			
+			vdao.update(v);
 		}
 		catch (Exception e)
 		{
