@@ -5,17 +5,25 @@
     <string name="app_name">WellTrak</string>
 	
 	<string name="cancel">Cancel</string>
-	<string name="ok">OK</string>
+	<string name="ok">Ok </string>
 	
 	<string name="wl_btnNewWell">New Well</string>
 
 	<string name="wd_etName">Name</string>
 	<string name="wd_etAddress">Address</string>
 	<string name="wd_btnUpdateWell">Update Well</string>
+	
+	<string name="nw_etName">Name</string>
+	<string name="nw_etPwsid">PWSID</string>
+	<string name="nw_etLocation">Location</string>
+	
+	<string name="vi_tvFm">FM:</string>
+	<string name="vi_tvFrcPoe">FRC POE:</string>
+	<string name="vi_tvFrcPou">FRC POU:</string>
+	<string name="vi_tvPh">pH:</string>
+	
 	<string name="vd_etFlowMeter">Flow Meter Reading</string>
-	<string name="vd_etEntryChlorine"
-		>Chlorine Residual at Point of Entry</string>
-	<string name="vd_etRemoteChlorine"
-		>Chlorine Residual at Point of Use</string>
+	<string name="vd_etEntryChlorine">Chlorine Residual at Point of Entry</string>
+	<string name="vd_etRemoteChlorine">Chlorine Residual at Point of Use</string>
 	<string name="vd_btnUpdateVisit">Update Visit</string>
 </resources>
