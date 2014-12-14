@@ -30,7 +30,7 @@ public class WellListFragment extends Fragment
 		return rootView;
 	}
 
-	public void addListenerOnButton()
+	private void addListenerOnButton()
 	{
 		btnNewWell.setOnClickListener(new OnClickListener() {
 

@@ -29,7 +29,7 @@ public class MainActivity extends FragmentActivity implements
 
 		// Initilization
 		DatabaseManager.INSTANCE.init(this);
-		Item_Tests.run();	
+//		Item_Tests.run();	
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
