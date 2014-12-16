@@ -17,7 +17,9 @@
 		android:ems="10"
 		android:layout_width="match_parent"
 		android:layout_below="@id/nw_tvName"
-		android:id="@+id/nw_etName"/>
+		android:id="@+id/nw_etName"
+		android:imeOptions="actionNext"
+		android:inputType="textCapWords"/>
 
 	<TextView
 		android:layout_height="wrap_content"
@@ -32,6 +34,8 @@
 		android:ems="10"
 		android:layout_width="match_parent"
 		android:layout_below="@id/nw_tvPwsid"
+		android:imeOptions="actionNext"
+		android:inputType="textCapWords"
 		android:id="@+id/nw_etPwsid"/>
 
 	<TextView
@@ -47,6 +51,8 @@
 		android:ems="10"
 		android:layout_width="match_parent"
 		android:layout_below="@id/nw_tvLocation"
+		android:imeOptions="actionDone"
+		android:inputType="textCapWords"
 		android:id="@+id/nw_etLocation"/>
 
 	<LinearLayout

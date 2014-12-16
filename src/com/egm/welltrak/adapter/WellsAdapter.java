@@ -1,36 +1,39 @@
 package com.egm.welltrak.adapter;
+
+import com.egm.welltrak.R;
 import android.widget.*;
 import android.view.*;
+import android.content.*;
+import java.util.*;
+import com.egm.welltrak.model.*;
 
-public class WellsAdapter extends BaseAdapter
+public class WellsAdapter extends ArrayAdapter
 {
-
-	@Override
-	public long getItemId(int p1)
-	{
-		// TODO: Implement this method
-		return 0;
+	private final Context context; 
+	//private final String[] values;
+	ArrayList<WellItem> items;
+	
+	public WellsAdapter(Context context, ArrayList<WellItem> items) 
+	{ 
+		super(context, R.layout.well_item, items); 
+		this.context = context; 
+		this.items = items;
 	}
-
+	
 	@Override
-	public Object getItem(int p1)
-	{
-		// TODO: Implement this method
-		return null;
+	public View getView(int position, View convertView, ViewGroup parent) 
+	{ 
+		LayoutInflater inflater = (LayoutInflater) context 
+			.getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
+		View rowView = inflater.inflate(R.layout.well_item, parent, false); 
+		TextView name = (TextView) rowView.findViewById(R.id.wi_tvName); 
+		TextView pwsid = (TextView) rowView.findViewById(R.id.wi_tvPwsid);
+		TextView location = (TextView) rowView.findViewById(R.id.wi_tvLocation);
+		WellItem item = items.get(position);
+		name.setText(item.getName());
+		pwsid.setText(item.getPwsid());
+		location.setText(item.getLocation());
+		
+		return rowView; 
 	}
-
-	@Override
-	public int getCount()
-	{
-		// TODO: Implement this method
-		return 0;
-	}
-
-	@Override
-	public View getView(int p1, View p2, ViewGroup p3)
-	{
-		// TODO: Implement this method
-		return null;
-	}
-
 }

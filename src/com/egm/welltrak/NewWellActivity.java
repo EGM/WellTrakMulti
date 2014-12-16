@@ -52,7 +52,7 @@ public class NewWellActivity extends Activity
 					if (item.getName().isEmpty())
 					{
 						Toast.makeText(NewWellActivity.this, 
-									   "Name can't be blank", 
+									   getString(R.string.name_blank), 
 									   Toast.LENGTH_SHORT).show();
 					}
 					else
@@ -61,13 +61,13 @@ public class NewWellActivity extends Activity
 						if (result == -1L)
 						{
 							Toast.makeText(NewWellActivity.this, 
-										   "Failed to add well", 
+										   getString(R.string.add_fail),
 										   Toast.LENGTH_SHORT).show();
 						}
 						else
 						{
 							Toast.makeText(NewWellActivity.this, 
-										   "Successfully added well", 
+										   getString(R.string.add_success), 
 										   Toast.LENGTH_SHORT).show();
 							finish();
 						}

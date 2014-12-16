@@ -19,6 +19,8 @@
 		android:ems="10"
 		android:layout_width="match_parent"
 		android:id="@+id/wd_etName"
+		android:imeOptions="actionNext"
+		android:inputType="textCapWords"
 		android:layout_below="@id/wd_tvName"/>
 
 	<TextView
@@ -35,6 +37,8 @@
 		android:ems="10"
 		android:layout_width="match_parent"
 		android:id="@+id/wd_etAddress"
+		android:imeOptions="actionDone"
+		android:inputType="textCapWords"
 		android:layout_below="@id/wd_tvAddress"/>
 
 	<Button

@@ -17,6 +17,10 @@
 	<string name="nw_etPwsid">PWSID</string>
 	<string name="nw_etLocation">Location</string>
 	
+	<string name="name_blank">Well name can\'t be blank</string>
+	<string name="add_fail">Failed to add well</string>
+	<string name="add_success">Successfully added well</string>
+	
 	<string name="vi_tvFm">FM:</string>
 	<string name="vi_tvFrcPoe">FRC POE:</string>
 	<string name="vi_tvFrcPou">FRC POU:</string>

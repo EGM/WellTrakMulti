@@ -2,6 +2,10 @@ package com.egm.welltrak;
 
 import com.egm.util.L;
 import com.egm.welltrak.MainActivity;
+import com.egm.welltrak.adapter.WellsAdapter;
+import com.egm.welltrak.dao.WellDao;
+import com.egm.welltrak.model.WellItem;
+import java.util.ArrayList;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,7 +30,11 @@ public class WellListFragment extends Fragment
 		btnNewWell =   (Button) rootView.findViewById(R.id.wl_btnNewWell);
 		lvWellList = (ListView) rootView.findViewById(R.id.wl_lvWellList);
 		addListenerOnButton();
-
+		
+		WellDao dao = new WellDao();
+		WellsAdapter adapter = new WellsAdapter(getActivity(), dao.getAll());
+		lvWellList.setAdapter(adapter);
+		
 		return rootView;
 	}
 

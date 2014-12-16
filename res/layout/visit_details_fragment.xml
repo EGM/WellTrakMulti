@@ -26,6 +26,8 @@
 		android:ems="10"
 		android:layout_width="match_parent"
 		android:id="@+id/vd_etFlowMeter"
+		android:imeOptions="actionNext"
+		android:inputType="number"
 		android:layout_below="@id/vd_tvFlowMeter"/>
 
 	<TextView
@@ -42,6 +44,8 @@
 		android:ems="10"
 		android:layout_width="match_parent"
 		android:id="@+id/vd_etEntryChlorine"
+		android:imeOptions="actionNext"
+		android:inputType="numberDecimal"
 		android:layout_below="@id/vd_tvEntryChlorine"/>
 
 	<TextView
@@ -58,6 +62,8 @@
 		android:ems="10"
 		android:layout_width="match_parent"
 		android:id="@+id/vd_etRemoteChlorine"
+		android:imeOptions="actionDone"
+		android:inputType="numberDecimal"
 		android:layout_below="@id/vd_tvRemoteChlorine"/>
 
 	<Button
