@@ -25,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import java.util.*;
+import android.database.*;
 
 public class WellListFragment extends Fragment {
 	private Button btnNewWell;
@@ -55,7 +56,7 @@ public class WellListFragment extends Fragment {
 		
 		try {
 			L.i("count="+dao.getCount());
-			item = dao.get(1);
+			item = (WellItem) adapter.getItem(0);
 			L.d(item.toString());
 		} catch (Exception e) {
 			L.e("err", e);
@@ -81,7 +82,7 @@ public class WellListFragment extends Fragment {
 									int position, long id) {
 				//TODO: Do something useful
 				L.d("position: "+position+", id: "+id);
-				item = dao.get(position+1);
+				item = (WellItem) adapter.getItem(position);
 				L.d(item.getName());
 			}
 		});
@@ -96,8 +97,8 @@ public class WellListFragment extends Fragment {
 		super.onCreateContextMenu(menu, v, menuInfo);
 		AdapterContextMenuInfo aInfo = (AdapterContextMenuInfo) menuInfo;
 		
-		WellItem wItem = (WellItem) adapter.getItem(aInfo.position); 
-		menu.setHeaderTitle("Options for " + wItem.getName()); 
+		item = (WellItem) adapter.getItem(aInfo.position); 
+		menu.setHeaderTitle("Options for " + item.getName()); 
 		menu.add(1, 1, 1, "Details"); 
 		menu.add(1, 2, 2, "Delete");
 	}
@@ -110,6 +111,17 @@ public class WellListFragment extends Fragment {
 			case 1: switchString = "details";
 				break;
 			case 2: switchString = "delete";
+//				AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo(); 
+//				int index = info.position;	
+				L.d(item.toString());
+				if (item!=null) {
+					long index = item.getId();
+					String name = item.getName();
+					L.d(switchString+" #"+index+", "+name);
+					dao.delete(item);
+					adapter.remove(item);
+					refresh();
+				}
 				break;
 		}
 		// Implements our logic 
