@@ -30,4 +30,21 @@
 	<string name="vd_etEntryChlorine">Chlorine Residual at Point of Entry</string>
 	<string name="vd_etRemoteChlorine">Chlorine Residual at Point of Use</string>
 	<string name="vd_btnUpdateVisit">Update Visit</string>
+	
+	<string-array name="menu">
+		<item>Edit</item>
+		<item>Delete</item>
+		<item>Send</item>
+	</string-array>
+	
+	<string-array name="countries">
+		<item>Sweden</item>
+		<item>Norway</item>
+		<item>Finland</item>
+		<item>Denmark</item>
+		<item>Germany</item>
+		<item>Poland</item>
+		<item>Netherlands</item>
+		<item>Belgium</item>
+	</string-array>
 </resources>

@@ -57,10 +57,12 @@ public class MainActivity extends FragmentActivity implements
 
 			@Override
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				//L.d("arg 0: "+arg0+", 1: "+arg1+", 2: "+arg2);
 			}
 
 			@Override
 			public void onPageScrollStateChanged(int arg0) {
+				//L.d("arg 0: "+arg0);
 			}
 		});
 		} catch (Exception e) {

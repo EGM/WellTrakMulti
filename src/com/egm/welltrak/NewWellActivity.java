@@ -9,8 +9,7 @@ import android.widget.*;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-public class NewWellActivity extends Activity
-{
+public class NewWellActivity extends Activity {
 	private Button btnOk;
 	private Button btnCancel;
 	private EditText etName;
@@ -20,9 +19,7 @@ public class NewWellActivity extends Activity
 	private WellDao dao;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		// TODO: Implement this method
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_well);
 
@@ -37,53 +34,38 @@ public class NewWellActivity extends Activity
 		dao = new WellDao();
 	}
 
-	private void addListenerOnButton()
-	{
-		btnOk.setOnClickListener(new OnClickListener() 
-			{
-				@Override
-				public void onClick(View arg0)
-				{
-					//do something
-					L.d("New well 'Ok' clicked");
-					item.setName(etName.getText().toString());
-					item.setPwsid(etPwsid.getText().toString());
-					item.setLocation(etLocation.getText().toString());
-					if (item.getName().isEmpty())
-					{
+	private void addListenerOnButton() {
+		btnOk.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				item.setName(etName.getText().toString());
+				item.setPwsid(etPwsid.getText().toString());
+				item.setLocation(etLocation.getText().toString());
+				if (item.getName().isEmpty()) {
+					Toast.makeText(NewWellActivity.this, 
+								   getString(R.string.name_blank), 
+								   Toast.LENGTH_SHORT).show();
+				} else {
+					long result = dao.add(item);
+					if (result == -1L) {
 						Toast.makeText(NewWellActivity.this, 
-									   getString(R.string.name_blank), 
+									   getString(R.string.add_fail),
 									   Toast.LENGTH_SHORT).show();
-					}
-					else
-					{
-						long result = dao.add(item);
-						if (result == -1L)
-						{
-							Toast.makeText(NewWellActivity.this, 
-										   getString(R.string.add_fail),
-										   Toast.LENGTH_SHORT).show();
-						}
-						else
-						{
-							Toast.makeText(NewWellActivity.this, 
-										   getString(R.string.add_success), 
-										   Toast.LENGTH_SHORT).show();
-							finish();
-						}
+					} else {
+						Toast.makeText(NewWellActivity.this, 
+									   getString(R.string.add_success), 
+									   Toast.LENGTH_SHORT).show();
+						finish();
 					}
 				}
-			});
+			}
+		});
 
-		btnCancel.setOnClickListener(new OnClickListener() 
-			{
-				@Override
-				public void onClick(View arg0)
-				{
-					//do something
-					L.d("New well 'Cancel' clicked");
-					finish();
-				}
-			});
+		btnCancel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				finish();
+			}
+		});
 	}
 }

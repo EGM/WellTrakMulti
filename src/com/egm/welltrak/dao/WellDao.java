@@ -92,7 +92,6 @@ public class WellDao
 	public ArrayList<WellItem> getAll()
 	{ 
 		ArrayList<WellItem> list = new ArrayList<WellItem>();
-		WellItem item = new WellItem();
 		Cursor cursor = DatabaseManager.INSTANCE.getDatabase()
 			.query(TABLE_NAME, new String[]{ "*" }, 
 				   null, null, null, null, null);
@@ -100,10 +99,11 @@ public class WellDao
 		{
 			do
 			{
-				item.setId(cursor.getInt(WellColumns._ID.getValue()));
-				item.setName(cursor.getString(WellColumns.NAME.getValue()));
-				item.setPwsid(cursor.getString(WellColumns.PWSID.getValue()));
-				item.setLocation(cursor.getString(WellColumns.LOCATION.getValue()));
+				WellItem item = new WellItem(
+					cursor.getInt(WellColumns._ID.getValue()),
+					cursor.getString(WellColumns.NAME.getValue()),
+					cursor.getString(WellColumns.PWSID.getValue()),
+					cursor.getString(WellColumns.LOCATION.getValue()));
 				list.add(item);
 			}
 			while (cursor.moveToNext());

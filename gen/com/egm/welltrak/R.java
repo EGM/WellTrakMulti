@@ -8,6 +8,10 @@
 package com.egm.welltrak;
 
 public final class R {
+    public static final class array {
+        public static final int countries=0x7f060001;
+        public static final int menu=0x7f060000;
+    }
     public static final class attr {
     }
     public static final class dimen {
@@ -25,52 +29,57 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080020;
-        public static final int list=0x7f080015;
-        public static final int nw_btnCancel=0x7f080007;
-        public static final int nw_btnOk=0x7f080008;
-        public static final int nw_etLocation=0x7f080006;
-        public static final int nw_etName=0x7f080002;
-        public static final int nw_etPwsid=0x7f080004;
-        public static final int nw_tvLocation=0x7f080005;
-        public static final int nw_tvName=0x7f080001;
-        public static final int nw_tvPwsid=0x7f080003;
-        public static final int pager=0x7f080000;
-        public static final int vd_btnUpdateVisit=0x7f080010;
-        public static final int vd_dpDate=0x7f080009;
-        public static final int vd_etEntryChlorine=0x7f08000d;
-        public static final int vd_etFlowMeter=0x7f08000b;
-        public static final int vd_etRemoteChlorine=0x7f08000f;
-        public static final int vd_tvEntryChlorine=0x7f08000c;
-        public static final int vd_tvFlowMeter=0x7f08000a;
-        public static final int vd_tvRemoteChlorine=0x7f08000e;
-        public static final int vi_tvDate=0x7f080011;
-        public static final int vi_tvFrcPoe=0x7f080012;
-        public static final int vi_tvFrcPou=0x7f080013;
-        public static final int vi_tvPh=0x7f080014;
-        public static final int wd_btnUpdateWell=0x7f08001a;
-        public static final int wd_etAddress=0x7f080019;
-        public static final int wd_etName=0x7f080017;
-        public static final int wd_tvAddress=0x7f080018;
-        public static final int wd_tvName=0x7f080016;
-        public static final int wi_tvLocation=0x7f08001d;
-        public static final int wi_tvName=0x7f08001b;
-        public static final int wi_tvPwsid=0x7f08001c;
-        public static final int wl_btnNewWell=0x7f08001e;
-        public static final int wl_lvWellList=0x7f08001f;
+        public static final int action_settings=0x7f090021;
+        public static final int item=0x7f090022;
+        public static final int item_delete=0x7f090020;
+        public static final int list=0x7f090015;
+        public static final int nw_btnCancel=0x7f090007;
+        public static final int nw_btnOk=0x7f090008;
+        public static final int nw_etLocation=0x7f090006;
+        public static final int nw_etName=0x7f090002;
+        public static final int nw_etPwsid=0x7f090004;
+        public static final int nw_tvLocation=0x7f090005;
+        public static final int nw_tvName=0x7f090001;
+        public static final int nw_tvPwsid=0x7f090003;
+        public static final int pager=0x7f090000;
+        public static final int vd_btnUpdateVisit=0x7f090010;
+        public static final int vd_dpDate=0x7f090009;
+        public static final int vd_etEntryChlorine=0x7f09000d;
+        public static final int vd_etFlowMeter=0x7f09000b;
+        public static final int vd_etRemoteChlorine=0x7f09000f;
+        public static final int vd_tvEntryChlorine=0x7f09000c;
+        public static final int vd_tvFlowMeter=0x7f09000a;
+        public static final int vd_tvRemoteChlorine=0x7f09000e;
+        public static final int vi_tvDate=0x7f090011;
+        public static final int vi_tvFrcPoe=0x7f090012;
+        public static final int vi_tvFrcPou=0x7f090013;
+        public static final int vi_tvPh=0x7f090014;
+        public static final int wd_btnUpdateWell=0x7f09001a;
+        public static final int wd_etAddress=0x7f090019;
+        public static final int wd_etName=0x7f090017;
+        public static final int wd_tvAddress=0x7f090018;
+        public static final int wd_tvName=0x7f090016;
+        public static final int wi_tvLocation=0x7f09001d;
+        public static final int wi_tvName=0x7f09001b;
+        public static final int wi_tvPwsid=0x7f09001c;
+        public static final int wl_btnNewWell=0x7f09001e;
+        public static final int wl_lvWellList=0x7f09001f;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_new_well=0x7f030001;
-        public static final int visit_details_fragment=0x7f030002;
-        public static final int visit_item=0x7f030003;
-        public static final int visit_list_fragment=0x7f030004;
-        public static final int well_details_fragment=0x7f030005;
-        public static final int well_item=0x7f030006;
-        public static final int well_list_fragment=0x7f030007;
+        public static final int main_popup_menu=0x7f030002;
+        public static final int visit_details_fragment=0x7f030003;
+        public static final int visit_item=0x7f030004;
+        public static final int visit_list_fragment=0x7f030005;
+        public static final int well_details_fragment=0x7f030006;
+        public static final int well_item=0x7f030007;
+        public static final int well_list_fragment=0x7f030008;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int contextual_menu=0x7f080000;
+        public static final int main=0x7f080001;
+        public static final int main_popup_menu=0x7f080002;
     }
     public static final class string {
         public static final int action_settings=0x7f050000;
@@ -118,10 +127,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }

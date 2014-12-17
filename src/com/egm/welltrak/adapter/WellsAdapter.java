@@ -1,6 +1,7 @@
 package com.egm.welltrak.adapter;
 
 import com.egm.welltrak.R;
+import com.egm.util.L;
 import android.widget.*;
 import android.view.*;
 import android.content.*;
@@ -10,8 +11,7 @@ import com.egm.welltrak.model.*;
 public class WellsAdapter extends ArrayAdapter
 {
 	private final Context context; 
-	//private final String[] values;
-	ArrayList<WellItem> items;
+	private final ArrayList<WellItem> items;
 	
 	public WellsAdapter(Context context, ArrayList<WellItem> items) 
 	{ 
@@ -26,9 +26,11 @@ public class WellsAdapter extends ArrayAdapter
 		LayoutInflater inflater = (LayoutInflater) context 
 			.getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
 		View rowView = inflater.inflate(R.layout.well_item, parent, false); 
+		
 		TextView name = (TextView) rowView.findViewById(R.id.wi_tvName); 
 		TextView pwsid = (TextView) rowView.findViewById(R.id.wi_tvPwsid);
 		TextView location = (TextView) rowView.findViewById(R.id.wi_tvLocation);
+		
 		WellItem item = items.get(position);
 		name.setText(item.getName());
 		pwsid.setText(item.getPwsid());
